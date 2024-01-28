@@ -94,15 +94,19 @@ const BODY_PARTS: Array<JSX.Element> = [
   LEFT_LEG,
 ];
 
-const HangmanDrawing = () => {
+type HangmanDrawingProps = {
+  numberOfIncorrectGuesses: number;
+};
+
+const HangmanDrawing = ({ numberOfIncorrectGuesses }: HangmanDrawingProps) => {
   return (
     <div style={{ position: 'relative' }}>
-      {BODY_PARTS}
+      {BODY_PARTS.slice(0, numberOfIncorrectGuesses)}
       <div
         style={{
           height: '50px',
           width: '10px',
-          backgroundColor: 'black',
+          background: 'black',
           position: 'absolute',
           top: 0,
           right: 0,
@@ -112,7 +116,7 @@ const HangmanDrawing = () => {
         style={{
           height: '10px',
           width: '200px',
-          backgroundColor: 'black',
+          background: 'black',
           marginLeft: '120px',
         }}
       />
@@ -120,13 +124,11 @@ const HangmanDrawing = () => {
         style={{
           height: '400px',
           width: '10px',
-          backgroundColor: 'black',
+          background: 'black',
           marginLeft: '120px',
         }}
       />
-      <div
-        style={{ height: '10px', width: '250px', backgroundColor: 'black' }}
-      />
+      <div style={{ height: '10px', width: '250px', background: 'black' }} />
     </div>
   );
 };
