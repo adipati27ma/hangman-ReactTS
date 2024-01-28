@@ -24,6 +24,8 @@ function App() {
     .split('')
     .every((letter) => guessedLetters.includes(letter));
 
+  // * Fungsi useCallback(() => {}, []) adalah untuk mengurangi re-renders
+  // * re-renders dilakukan hanya pada saat dependencies "[]" berubah nilainya
   const addGuessedLetter = useCallback(
     (letter: string) => {
       if (guessedLetters.includes(letter) || isLoser || isWinner) return;
